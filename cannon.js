@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import {modelURL} from '/cannon.glb';
 
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
     const localPrefix = isLast ? '└─' : '├─';
@@ -23,7 +24,7 @@ export class cannon {
 
     _init() {
         const loader = new GLTFLoader();
-        loader.load('/cannon.glb', (gltf)=>{
+        loader.load(modelURL, (gltf)=>{
             const model = gltf.scene;
             model.scale.set(.5, .5, .5);
             this.scene.add(model);
